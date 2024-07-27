@@ -28,8 +28,9 @@ app.get("/shoes",async(req,res)=>
     if(price)
     {
         try
-        {
-           const data=await Product.find(filter).sort(price) 
+        {  
+           const sortOrder = price === 'asc' ? 1 : -1;
+           const data=await Product.find(filter).sort({ price: sortOrder }) 
            res.send(data) 
         }
         catch(e)
@@ -92,8 +93,9 @@ app.get("/tshirts",async(req,res)=>
     {
         try
         {
-           const data=await Product.find(filter).sort(price) 
-           res.send(data) 
+            const sortOrder = price === 'asc' ? 1 : -1;
+            const data=await Product.find(filter).sort({ price: sortOrder }) 
+            res.send(data) 
         }
         catch(e)
         {
@@ -136,7 +138,8 @@ app.get("/skinCare",async(req,res)=>
     {
         try
         {
-           const data=await Product.find(filter).sort(price) 
+            const sortOrder = price === 'asc' ? 1 : -1;
+            const data=await Product.find(filter).sort({ price: sortOrder }) 
            res.send(data) 
         }
         catch(e)
@@ -178,8 +181,9 @@ app.get("/sarees",async(req,res)=>
     {
         try
         {
-           const data=await Product.find(filter).sort(price) 
-           res.send(data) 
+            const sortOrder = price === 'asc' ? 1 : -1;
+            const data=await Product.find(filter).sort({ price: sortOrder }) 
+            res.send(data) 
         }
         catch(e)
         {
